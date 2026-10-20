@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gazorkhan and Alamut Attractions</title>
+
+<link rel="preload" href="IranNastaliq.ttf" as="font" type="font/ttf" crossorigin>
+
+<!-- Favicon for browser tab -->
+
+<link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon.png">
+<link rel="apple-touch-icon" href="images/icon.png">
+<link rel="shortcut icon" type="image/png" href="images/icon.png">
+
+<style>
+@font-face {
+    font-family: 'IranNastaliq';
+    src: url('IranNastaliq.ttf') format('truetype');
+    font-display: block;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Tahoma, Geneva, Verdana, sans-serif;
+    line-height:2;
+    background:#f6f1e7;
+    color:#333;
+}
+
+.hero{
+    height:70vh;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#f7f7f7;
+}
+
+.hero-content{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:20px;
+    z-index: 99;
+    position: absolute;
+    top: 75%;
+    -webkit-text-stroke: thin;
+}
+
+.hero p{
+    max-width:800px;
+    font-size:25px;
+    z-index: 99;
+    position: absolute;
+    top: 91%;
+    text-align: center;
+}
+
+.location-section{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+    text-align:center;
+}
+
+
+.location-section h2{
+    color:#6b4b1f;
+    font-size:34px;
+    margin-bottom:25px;
+}
+
+
+.location-card{
+
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
+
+}
+
+
+.location-card p{
+
+    font-size:21px;
+    margin-bottom:25px;
+
+}
+
+
+.map-links{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+
+}
+
+
+.map-links a{
+
+    text-decoration:none;
+
+    background:#6b4b1f;
+    color:white;
+
+    min-width:220px;
+
+    padding:12px 25px;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    transition:.3s;
+
+}
+
+
+.map-links a:hover{
+
+    background:#8b6230;
+
+    transform:translateY(-5px) scale(1.03);
+
+}
+
+
+@media(max-width:768px){
+
+    .location-section h2{
+        font-size:28px;
+    }
+
+
+    .location-card p{
+        font-size:22px;
+    }
+
+
+    .map-links a{
+        width:100%;
+        font-size:22px;
+    }
+
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section{
+    margin-bottom:70px;
+}
+
+.section h2{
+    color:#6b4b1f;
+    margin-bottom:20px;
+    font-size:26px;
+}
+
+.card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:center;
+    margin-top:25px;
+}
+.card-detar{
+    display:grid;
+    grid-template-columns:2.5fr 1fr;
+    gap:30px;
+    align-items:center;
+    margin-top:25px;
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.card-content{
+    font-size:17px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+footer{
+    background:#3d2a14;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:32px;
+        top: 65%;
+    }
+
+    .hero p{
+        font-size:24px;
+    }
+
+    .card{
+        grid-template-columns:1fr;
+    }
+
+    .section h2{
+        font-size:28px;
+    }
+}
+    html{
+    scroll-behavior:smooth;
+}
+
+.section{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 1s ease;
+}
+
+.section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.hero{
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:#f6f1e7;
+    z-index:-1;
+}
+
+.hero{
+    height:70vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+@media (max-width:768px){
+
+    .hero{
+        height:65vh;
+    }
+
+    .hero-logo-large{
+        width: 150px !important;
+        height: 150px !important;
+        /* left: 31% !important; */
+        top: 15% !important;
+    }
+
+}
+
+.hero-logo-large{
+    width:250px;
+    height:250px;
+    object-fit:contain;
+
+    position:absolute;
+    top:10%;
+    /* left:40%; */
+    transform:translate(-50%, -50%);
+
+    animation:heroZoom 20s infinite alternate;
+}
+
+@keyframes heroZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.15);
+    }
+}
+
+.card{
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.card img{
+    transition:all .7s ease;
+    overflow:hidden;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.gallery img{
+    transition:.6s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.section h2{
+    position:relative;
+    display:inline-block;
+    padding-left: 15px;
+}
+
+.section h2::after{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    left:15px;
+    width:95%;
+    height:3px;
+    background:#c59d5f;
+    border-radius:5px;
+}
+
+.card-content p{
+    margin-bottom:15px;
+}
+
+footer{
+    font-size:22px;
+}
+    .location-box{
+    margin-top:20px;
+    padding:15px 20px;
+    background:#fffaf2;
+    border-left:5px solid #c59d5f;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.location-box p{
+    margin:8px 0;
+    font-size:17px;
+}
+
+.location-links{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
+
+.location-links a{
+    text-decoration:none;
+    color:white;
+    background:#6b4b1f;
+    padding:8px 16px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.location-links a:hover{
+    transform:translateY(-2px);
+    background:#8b6230;
+}
+
+.distance{
+    color:#8b0000;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+    .location-box p{
+        font-size:24px;
+    }
+
+    .location-links a{
+        width:100%;
+        text-align:center;
+    }
+}
+.location-links a{
+    min-width:220px;
+    text-align:center;
+}
+
+.location-links a:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+    .hero-logo{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:15px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+    animation:logoFade 1.5s ease;
+}
+
+.hero-present{
+    font-size:28px;
+    color:#f6d7a7;
+
+    margin-bottom:20px;
+
+    text-shadow:0 2px 10px rgba(0,0,0,.5);
+
+    animation:fadeUp 1.2s ease;
+}
+
+.typing-title{
+    margin-bottom:25px;
+}
+
+@keyframes logoFade{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+.intro{
+    position:fixed;
+    inset:0;
+    background:#f6f1e7;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation-delay:2.5s;
+}
+.intro.hide{
+    animation:fadeOut 1s ease forwards;
+}
+
+.intro-logo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    margin-bottom:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    animation:pop 1s ease;
+}
+
+.hero-present{
+    font-size:32px;
+    color:#6b4b1f;
+    animation:fadeUp 1.2s ease;
+}
+
+@media screen and (max-width: 480px) {
+    .hero-present {
+        font-size: 20px;
+    }
+    .hero p {
+        font-size: 17px;
+        padding: 0px 15px;
+        top: 80%;
+        text-box-trim: trim-both;
+    }
+    .hero-title {
+        top: 65%;
+    }
+}
+
+@keyframes pop{
+    from{transform:scale(.5);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+    .lightbox{
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.95);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        z-index:99999;
+        cursor:pointer;
+    }
+    
+    .lightbox.active{
+        display:flex;
+    }
+    
+    .lightbox img{
+        max-width:90%;
+        max-height:90vh;
+        border-radius:15px;
+        box-shadow:0 0 40px rgba(255,255,255,.2);
+        animation:zoomIn .3s ease;
+    }
+    
+    @keyframes zoomIn{
+        from{
+            opacity:0;
+            transform:scale(.8);
+        }
+        to{
+            opacity:1;
+            transform:scale(1);
+        }
+    }
+    
+    .gallery img{
+        cursor:pointer;
+    }
+
+    .image-strip {
+        width: 100%;
+        height: 105px;
+        overflow: hidden;
+        margin-top: 40px;
+    }
+    .image-track {
+        display: flex;
+        height: 100%;
+        width: max-content;
+        animation: scroll-images 25s linear infinite;
+    }
+    
+    .image-track img {
+        height: 100%;
+        width: 115px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+    @keyframes scroll-images {
+        from {
+            transform: translateX(0);
+        }
+    
+        to {
+            transform: translateX(-3000px);
+        }
+    }
+  .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9;
+      background: #6b4b1f;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+  
+  .lang-switch:hover {
+      background: #8b6230;
+      transform: translateY(-2px);
+  }
+</style>
+
+</head>
+<body>
+<a href="index.html" class="lang-switch">
+  🌐 Persian
+</a>
+<div class="intro">
+
+    <img src="images/icon.png" class="intro-logo" alt="Detar">
+    
+    <div class="hero-present">Presented by Detar Homestay</div>
+
+</div>
+
+<section class="hero">
+
+    <img src="images/icon.png" class="hero-logo-large" alt="Detar">
+    <h1 class="hero-title">
+        Detar Homestay
+    </h1>
+    
+    <p class="hero-subtitle">
+        Guide to Tourist Attractions, Nature, and Sights of the Alamut Region
+    </p>
+
+</section>
+
+<section class="image-strip">
+    <div class="image-track">
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+        <img src="images/6.jpg" alt="">
+        <img src="images/7.jpg" alt="">
+        <img src="images/8.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/9.jpg" alt="">
+        <img src="images/10.jpg" alt="">
+        <img src="images/11.jpg" alt="">
+    
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+        <img src="images/6.jpg" alt="">
+        <img src="images/7.jpg" alt="">
+        <img src="images/8.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/9.jpg" alt="">
+        <img src="images/10.jpg" alt="">
+        <img src="images/11.jpg" alt="">
+        <img src="images/12.jpg" alt="">
+        <img src="images/13.jpg" alt="">
+        <img src="images/14.jpg" alt="">
+        <img src="images/15.jpg" alt="">
+        <img src="images/16.jpg" alt="">
+        <img src="images/17.jpg" alt="">
+        <img src="images/18.jpg" alt="">
+        <img src="images/19.jpg" alt="">
+
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+        <img src="images/6.jpg" alt="">
+        <img src="images/7.jpg" alt="">
+        <img src="images/8.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/9.jpg" alt="">
+        <img src="images/10.jpg" alt="">
+        <img src="images/11.jpg" alt="">
+        <img src="images/12.jpg" alt="">
+        <img src="images/13.jpg" alt="">
+        <img src="images/14.jpg" alt="">
+        <img src="images/15.jpg" alt="">
+        <img src="images/16.jpg" alt="">
+        <img src="images/17.jpg" alt="">
+        <img src="images/18.jpg" alt="">
+        <img src="images/19.jpg" alt="">
+    </div>
+</section>
+
+<div class="container">
+    <section class="section location-section">
+
+        <h2>📍 Detar Homestay Location</h2>
+    
+        <div class="location-card">
+    
+            <p>
+                To navigate and view the exact location of Detar Homestay, 
+                you can use the following links:
+            </p>
+    
+            <div class="map-links">
+    
+                <a target="_blank"
+                   href="https://maps.app.goo.gl/2kKfXrcYkxDPMwMx8">
+                    🌍 View on Google Maps
+                </a>
+    
+                <a target="_blank"
+                   href="https://neshan.org/maps/places/71d612558e4350f7b177147b91d11800#c36.439-50.582-17z-0p">
+                    🗺 View on Neshan
+                </a>
+    
+                <a target="_blank"
+                   href="https://balad.ir/p/%D8%A7%D9%82%D8%A7%D9%85%D8%AA%DA%AF%D8%A7%D9%87-%D8%A8%D9%88%D9%85%DA%AF%D8%B1%D8%AF%DB%8C-%D8%AF%D9%90%D8%AA%D9%8E%D8%B1_vernacular-accommodation-1THlUuBtwpQ0Tf?preview=true#17.27/36.439286/50.582029">
+                    📌 View on Balad
+                </a>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+
+    <section class="section">
+        <h2>Gazorkhan Village</h2>
+    
+        <div class="card">
+            <img src="images/gazorkhan.jpg" alt="Gazorkhan Village">
+    
+            <div class="card-content">
+                <p>
+                    Gazorkhan is situated in the heart of East Alamut region and is 
+                    famous for its mountainous nature, fruit orchards, fresh air, and 
+                    proximity to Alamut Castle. This village is one of the most 
+                    important tourist destinations in Qazvin Province.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Hassan Sabbah Castle (Alamut Castle)</h2>
+    
+        <div class="card">
+            <img src="images/alamut-castle.jpg" alt="Alamut Castle">
+    
+            <div class="card-content">
+                <p>
+                    Alamut Castle, also known as Hassan Sabbah Castle, is built 
+                    atop a high rock and is one of Iran's most famous historical monuments. 
+                    This fortress served as the headquarters of the Nizari Ismaili state 
+                    in the 11th century.
+                </p>
+    
+                <p>
+                    From the top of the castle, visitors can enjoy breathtaking views 
+                    of the Alborz mountain range and the lush valleys of Alamut.
+                </p>
+                <div class="location-box">
+    
+                    <p class="distance">
+                        📍 Distance to Detar Homestay: 5 minutes by car
+                    </p>
+                
+                    <div class="location-links">
+                        <a target="_blank"
+                           href="https://neshan.org/maps/places/9fba3041d89eaa15a96faa8c9c28105d#c36.443-50.587-16z-0p">
+                            View on Neshan
+                        </a>
+                
+                        <a target="_blank"
+                           href="https://balad.ir/p/2KGHqHhU6JKyXJ?preview=true#15.88/36.445137/50.586194">
+                            View on Balad
+                        </a>
+                    </div>
+    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="section">
+    
+        <h2>Garmagloo Valley</h2>
+    
+        <div class="card">
+    
+            <img src="images/garmagaloo.jpg" alt="Garmagloo Valley">
+    
+            <div class="card-content">
+    
+                <p>
+                    Garmagloo Valley is one of the lesser-known natural landscapes 
+                    of the Alamut region. Featuring towering cliffs, diverse vegetation, 
+                    and pleasant weather, it is an attractive destination for nature 
+                    enthusiasts and photography lovers.
+                </p>
+    
+                <p>
+                    Its proximity to Gazorkhan allows tourists to visit both 
+                    Hassan Sabbah Castle and the pristine local nature in a short trip.
+                </p>
+    
+                <div class="location-box">
+    
+                    <p class="distance">
+                        📍 Distance to Detar Homestay: approximately 10 minutes by car
+                    </p>
+    
+                    <div class="location-links">
+    
+                        <a target="_blank"
+                           href="https://neshan.org/maps/places/fac8627ab3676ca83ed8c9a3b2df945b#c36.437-50.586-17z-0p">
+                            View on Neshan
+                        </a>
+    
+                        <a target="_blank"
+                           href="https://balad.ir/p/337HfjMDvY3m3S?preview=true#15/36.43809/50.58835">
+                            View on Balad
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
+    <section class="section">
+        <h2>Ovan Lake</h2>
+    
+        <div class="card">
+            <img src="images/avan-lake.jpg" alt="Ovan Lake">
+    
+            <div class="card-content">
+                <p>
+                    Ovan Lake is one of the most beautiful natural lakes in Iran. 
+                    Nestled among mountains and green plains, it offers unique 
+                    and stunning views throughout all seasons.
+                </p>
+    
+                <p>
+                    Boating, nature photography, and walking are among the most popular 
+                    activities for tourists in this area.
+                </p>
+                <div class="location-box">
+    
+                <p class="distance">
+                    📍 Distance to Detar Homestay: approximately 1 hour by car
+                </p>
+            
+                <div class="location-links">
+            
+                    <a target="_blank"
+                       href="https://neshan.org/maps/places/08fa51204604f2030aabed733a6fcfe0#c36.483-50.449-15z-0p">
+                        View on Neshan
+                    </a>
+            
+                    <a target="_blank"
+                       href="https://balad.ir/p/5xJzoQet0DhkE0?preview=true">
+                        View on Balad
+                    </a>
+            
+                </div>
+            
+            </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Andej Village</h2>
+    
+        <div class="card">
+            <img src="images/andej.jpg" alt="Andej Village">
+    
+            <div class="card-content">
+                <p>
+                    Andej is one of the most scenic villages in Alamut, known for 
+                    its abundant orchards, permanent rivers, and mountainous nature.
+                </p>
+    
+                <p>
+                    This village serves as the starting point for many trekking and 
+                    mountaineering routes in the area.
+                </p>
+                <div class="location-box">
+    
+                <p class="distance">
+                    📍 Distance to Detar Homestay: approximately 30 minutes by car
+                </p>
+            
+                <div class="location-links">
+            
+                    <a target="_blank"
+                       href="https://neshan.org/maps/places/_b1ITr_xhxf2#c36.469-50.530-16z-0p">
+                        View on Neshan
+                    </a>
+            
+                    <a target="_blank"
+                       href="https://balad.ir/p/3jzh8SRfxmnbTW?preview=true#17.09/36.468537/50.527954">
+                        View on Balad
+                    </a>
+            
+                </div>
+            
+            </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Pich Bon</h2>
+    
+        <div class="card">
+            <img src="images/pichbon.jpg" alt="Pich Bon">
+    
+            <div class="card-content">
+                <p>
+                    Pich Bon is a lesser-known yet remarkably beautiful area in Alamut. 
+                    Its mountain vistas, green meadows, and peaceful tranquility make 
+                    it an excellent destination for nature lovers.
+                </p>
+                <div class="location-box">
+    
+                    <p class="distance">
+                        📍 Distance to Detar Homestay: approximately 1 hour by car
+                    </p>
+                
+                    <div class="location-links">
+            
+                        <a target="_blank"
+                           href="https://neshan.org/maps/places/_b1aQpQx2Idp#c36.401-50.777-18z-0p">
+                            View on Neshan
+                        </a>
+                
+                        <a target="_blank"
+                           href="https://balad.ir/p/5RQxCgJQ3IrRmq?preview=true#13.61/36.40322/50.78431">
+                            View on Balad
+                        </a>
+            
+                    </div>
+            
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section">
+    
+        <h2>Moallem Kalayeh Town</h2>
+    
+        <div class="card">
+    
+            <img src="images/moallem-kalayeh.jpg"
+                 alt="Moallem Kalayeh">
+    
+            <div class="card-content">
+    
+                <p>
+                    Moallem Kalayeh is the nearest town to Detar Homestay. Essential 
+                    services such as gas stations, markets, pharmacies, and banking facilities 
+                    are available here for tourists.
+                </p>
+    
+                <div class="location-box">
+    
+                    <p class="distance">
+                        ⛽ Distance to Detar Homestay: approximately 30 minutes by car
+                    </p>
+                    <div class="location-links">
+            
+                        <a target="_blank"
+                           href="https://neshan.org/maps/places/034760d3d1d164bc69a999e34ae7de4e#c36.451-50.475-15z-0p">
+                            View on Neshan
+                        </a>
+                
+                        <a target="_blank"
+                           href="https://balad.ir/p/5wSez4thsYeb16?preview=true">
+                            View on Balad
+                        </a>
+                
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+            <div class="location-box" style="margin-top:30px; border-left:5px solid #3d2a14;">
+    
+            <p style="font-size:28px; font-weight:bold;">
+                📌 Detar's One-Day Itinerary Suggestion for Alamut
+            </p>
+    
+            <p>🌄 Morning → Picnic near the cliffs of Andej</p>
+            <p>🍽 Noon → Rest and lunch at the Homestay</p>
+            <p>🏰 Afternoon → Visit Hassan Sabbah Castle</p>
+    
+        </div>
+    
+    </section>
+    
+    <section class="section">
+    
+        <h2>Stay at Detar</h2>
+    
+        <div class="card-detar">
+    
+            <div class="card-content">
+    
+                <p>
+                    If you would like to experience these routes up close, 
+                    Detar Homestay is ready to host you.
+                </p>
+    
+                <div class="location-box">
+                    <div class="location-links">
+                        <p>🔗</p>
+                        <a target="_blank"
+                           href="https://www.jabama.com/stay/traditional-504719">
+                            Book on Jabama
+                        </a>
+    
+                        <a target="_blank"
+                           href="https://www.jajiga.com/room/3303307">
+                            Book on Jajiga
+                        </a>
+    
+                        <a href="tel:+989917929528">
+                            Phone: +989917929528
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
+    
+    <section class="section">
+    
+        <h2>📸 Detar Memory Album</h2>
+    
+        <div class="card-detar">
+    
+            <div class="card-content">
+    
+                <p>
+                    Every corner of Alamut has a story to tell. 
+                    Here are some captured memories from Detar's guests.
+                </p>
+    
+            </div>
+    
+        </div>
+    
+        <div class="gallery guest-gallery">
+    
+            <img src="images/guest1.jpg" alt="">
+            <img src="images/guest2.jpg" alt="">
+            <img src="images/guest3.jpg" alt="">
+            <img src="images/guest4.jpg" alt="">
+            <img src="images/guest5.jpg" alt="">
+            <img src="images/guest6.jpg" alt="">
+            <img src="images/guest9.jpg" alt="">
+            <img src="images/guest10.jpg" alt="">
+            <img src="images/guest11.jpg" alt="">
+            <img src="images/guest12.jpg" alt="">
+    
+        </div>
+    
+    </section>
+    
+    <section class="section">
+        <h2>Alamut Image Gallery</h2>
+    
+        <div class="gallery">
+        
+            <img src="images/gazorkhan.jpg" alt="Gazorkhan">
+        
+            <img src="images/alamut-castle.jpg" alt="Alamut Castle">
+        
+            <img src="images/alamut-castle2.jpg" alt="Alamut Castle">
+        
+            <img src="images/garmagaloo.jpg" alt="Garmagloo Valley">
+        
+            <img src="images/avan-lake.jpg" alt="Ovan Lake">
+        
+            <img src="images/andej.jpg" alt="Andej">
+        
+            <img src="images/andej2.jpg" alt="Andej">
+        
+            <img src="images/pichbon.jpg" alt="Pich Bon">
+        
+            <img src="images/alamut-nature.jpg" alt="Alamut Nature">
+        
+            <img src="images/qale-view7.jpeg" alt="Hassan Sabbah Castle">
+        
+            <img src="images/qale-door.jpeg" alt="Hassan Sabbah Castle">
+        
+            <img src="images/qale-moqol.jpeg" alt="Hassan Sabbah Castle">
+        
+            <img src="images/qale-view4.jpeg" alt="Hassan Sabbah Castle">
+        
+            <img src="images/qale-view5.jpeg" alt="Hassan Sabbah Castle">
+        
+            <img src="images/qale-view6.jpeg" alt="Hassan Sabbah Castle">
+        
+        </div>
+    
+    </section>
+
+</div>
+
+<footer>
+
+<div>
+    Detar is not just a lodge; it is the beginning of a memorable experience.
+</div>
+
+<div style="margin-top:10px;font-size:20px;">
+    🌿 Detar Homestay | Gazorkhan, Alamut
+</div>
+
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const intro = document.querySelector('.intro');
+
+    setTimeout(() => {
+        intro.classList.add('hide');
+    }, 3000);
+});
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+
+        entry.target.classList.add('show');
+
+    }
+
+});
+
+},{
+    threshold:0.15
+});
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+</script>
+    <div class="lightbox" id="lightbox">
+        <img src="" id="lightbox-img" alt="">
+    </div>
+</body>
+    <script>
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    
+    document.querySelectorAll(".gallery img").forEach(img => {
+    
+        img.addEventListener("click", () => {
+    
+            lightbox.classList.add("active");
+    
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+    
+        });
+    
+    });
+    
+    lightbox.addEventListener("click", () => {
+    
+        lightbox.classList.remove("active");
+    
+    });
+    
+    document.addEventListener("keydown", (e) => {
+    
+        if(e.key === "Escape"){
+            lightbox.classList.remove("active");
+        }
+    
+    });
+    
+    </script>
+
+</html>
